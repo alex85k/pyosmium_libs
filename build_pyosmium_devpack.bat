@@ -7,5 +7,8 @@ call build_zlib.bat
 call build_bzip.bat
 call build_expat.bat
 call build_boost_py.bat
-echo Creating archive...
-7z a -t7z -mx=9 pyosmium_libs_%Variant%.7z %PREFIX% >NUL
+
+rem echo Creating archive...
+rem 7z a -t7z -mx=9 pyosmium_libs_%Variant%.7z %PREFIX% >NUL
+
+call build_pyosmium.bat
