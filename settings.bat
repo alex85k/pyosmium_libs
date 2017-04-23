@@ -4,6 +4,7 @@ if "%BOOST_ROOT%"=="" SET BOOST_ROOT=d:\boost
 if "%VARIANT%"=="" SET Variant=Release
 
 set "ER=if ERRORLEVEL 1 exit /b 1"
+set VS150COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\
 if "%COMPILER%"=="MINGW" (
   SET "PATH=%PATH%;c:\mingw64\bin"
   SET "MSYSDIR=c:\msys64\usr\bin"
@@ -48,6 +49,11 @@ if "%COMPILER%"=="MINGW" (
      set MSC_VER=14
      set "GENERATOR= -G"Visual Studio 14 2015 Win64""
      call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
+  )
+  if "%COMPILER%"=="MSVC2017"  (
+     set MSC_VER=14
+     set "GENERATOR= -G"Visual Studio 15 2017 Win64""
+     call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
   )
   set "CMAKE=cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
   SET "MAKEC=nmake"

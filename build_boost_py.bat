@@ -14,6 +14,7 @@ if NOT EXIST "%BOOST_ROOT%/include/boost-1_63/boost" (
   mkdir "%BOOST_ROOT%/include/boost-1_63/boost"
   xcopy /y /e /q boost "%BOOST_ROOT%/include/boost-1_63/boost"
 )
+set "TOOLSET=msvc-14.1"
 
 bjam toolset=%TOOLSET% address-model=64 threading=multi link=shared runtime-link=shared ^
    variant=debug,release --prefix=%BOOST_ROOT% ^

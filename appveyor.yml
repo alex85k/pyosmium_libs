@@ -33,12 +33,12 @@ build_script:
   - call build_pyosmium_devpack.bat
 
 artifacts:
-  - path: pyosmium_libs_Release.7z
-    name: pyosmium_libs_Release.7z
+  - path: pyosmium_libs2017_Release.7z
+    name: pyosmium_libs2017_Release.7z
 
 test: off
 
 deploy_script:
   - cd c:\dev
-  - curl -T pyosmium_libs_Release.7z --user %ACCOUNT% https://webdav.yandex.ru/libs/pyosmium_libs_Release.7z
+  - curl -T pyosmium_libs2017_Release.7z --user %ACCOUNT% https://webdav.yandex.ru/libs/pyosmium_libs2017_Release.7z
 

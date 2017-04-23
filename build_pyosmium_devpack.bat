@@ -1,4 +1,4 @@
-SET COMPILER=MSVC2015
+SET COMPILER=MSVC2017
 SET PREFIX=c:\libs
 SET BOOST_ROOT=%PREFIX:\=/%
 SET Variant=Release
@@ -8,7 +8,7 @@ call build_bzip.bat
 call build_expat.bat
 call build_boost_py.bat
 
-rem echo Creating archive...
-rem 7z a -t7z -mx=9 pyosmium_libs_%Variant%.7z %PREFIX% >NUL
+echo Creating archive...
+7z a -t7z -mx=9 pyosmium_libs2017_%Variant%.7z %PREFIX% >NUL
 
 call build_pyosmium.bat
