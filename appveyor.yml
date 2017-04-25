@@ -2,9 +2,16 @@ environment:
   P: "c:/projects/libs"
   ACCOUNT:
       secure: F8Xu4syZJRRLmTnPDOUjr5bG7Lk6UburldIUuxZ/OJQ=
-  PYTHON: "C:\\Python36-x64"
-  PYTHON_VERSION: "3.6.x" # currently 3.6.0
-  PYTHON_ARCH: "64"
+  matrix:
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "36"
+      BOOST_VER: "64"
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "36"
+      BOOST_VER: "63"
+    - PYTHON: "C:\\Python27-x64"
+      PYTHON_VERSION: "27"
+      BOOST_VER: "63"
 
 # branches to build
 branches:
@@ -16,6 +23,7 @@ branches:
 os: Visual Studio 2015
 
 install:
+  - SET SUFFIX=%PYTHON_VERSION%-b%BOOST_VER%
   - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
   - python --version
 

@@ -1,18 +1,18 @@
 setlocal
 call settings.bat 
 echo "Downloading and unpacking Boost:"
-call fetch.bat "http://downloads.sourceforge.net/project/boost/boost/1.63.0/boost_1_63_0.7z" boost_1_63_0 > nul
+call fetch.bat "http://downloads.sourceforge.net/project/boost/boost/1.%BOOST_VER%.0/boost_1_%BOOST_VER%_0.7z" boost_1_%BOOST_VER%_0 > nul
 echo "OK"
 
 set src=%CD%
-cd boost_1_63_0
+cd boost_1_%BOOST_VER%_0
 
 set "TOOLSET=msvc-%MSC_VER%.0"
 if NOT EXIST bjam.exe call bootstrap.bat
 
-if NOT EXIST "%BOOST_ROOT%/include/boost-1_63/boost" (
-  mkdir "%BOOST_ROOT%/include/boost-1_63/boost"
-  xcopy /y /e /q boost "%BOOST_ROOT%/include/boost-1_63/boost"
+if NOT EXIST "%BOOST_ROOT%/include/boost-1_%BOOST_VER%/boost" (
+  mkdir "%BOOST_ROOT%/include/boost-1_%BOOST_VER%/boost"
+  xcopy /y /e /q boost "%BOOST_ROOT%/include/boost-1_%BOOST_VER%/boost"
 )
 
 bjam toolset=%TOOLSET% address-model=64 threading=multi link=shared runtime-link=shared ^
